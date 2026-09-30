@@ -8,7 +8,7 @@ The admin client will be React, TypeScript, and Vite. The mobile client is Flutt
 
 ## Current mobile prototype
 
-Phase 1 is deliberately local and content-first. Screens consume a small `ContentRepository` interface whose current implementation returns realistic in-memory data. Replacing it with an API-backed implementation later should not require rebuilding the UI. The selected grade is the only persisted value.
+Phase 1 is deliberately local and content-first. Screens consume a small `ResourceRepository` interface whose current implementation returns realistic in-memory data. Replacing it with an API-backed implementation later should not require rebuilding the UI. Resource progress is normalized from `0.0` (not started) to `1.0` (complete). The selected grade is the only persisted value.
 
 State is kept close to the widgets that own it. No state-management framework, service locator, generated architecture, or speculative domain layer is used.
 

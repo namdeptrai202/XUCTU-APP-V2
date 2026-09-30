@@ -9,29 +9,31 @@ class Category {
   final String icon;
 }
 
-class LearningResource {
-  const LearningResource({
+class Resource {
+  const Resource({
     required this.id,
     required this.title,
     required this.resourceType,
     required this.grade,
     required this.categoryId,
-    required this.thumbnail,
+    required this.thumbnailKey,
     required this.accessType,
     this.progress,
     this.pageCount,
-    this.duration,
+    this.durationSeconds,
   });
   final int id;
   final String title;
   final ResourceType resourceType;
   final int grade;
   final int categoryId;
-  final String thumbnail;
+  final String thumbnailKey;
   final AccessType accessType;
+
+  /// Normalized learning progress from 0.0 (not started) to 1.0 (complete).
   final double? progress;
   final int? pageCount;
-  final String? duration;
+  final int? durationSeconds;
 }
 
 class Book {

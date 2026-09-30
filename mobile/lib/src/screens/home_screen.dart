@@ -14,16 +14,13 @@ class HomeScreen extends StatelessWidget {
     required this.onGradeChanged,
   });
   final int grade;
-  final ContentRepository repository;
+  final ResourceRepository repository;
   final ValueChanged<int> onGradeChanged;
 
-  void _openResource(BuildContext context, LearningResource resource) =>
-      Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (_) => ResourceDetailScreen(resource: resource),
-        ),
-      );
+  void _openResource(BuildContext context, Resource resource) => Navigator.push(
+    context,
+    MaterialPageRoute(builder: (_) => ResourceDetailScreen(resource: resource)),
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -258,8 +255,8 @@ class _ResourceSection extends StatelessWidget {
     required this.onTap,
   });
   final String title;
-  final List<LearningResource> resources;
-  final ValueChanged<LearningResource> onTap;
+  final List<Resource> resources;
+  final ValueChanged<Resource> onTap;
   @override
   Widget build(BuildContext context) {
     if (resources.isEmpty) return const SizedBox.shrink();

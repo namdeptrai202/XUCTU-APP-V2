@@ -13,7 +13,7 @@ class XuctuApp extends StatefulWidget {
 
 class _XuctuAppState extends State<XuctuApp> {
   static const _gradeKey = 'selected_grade';
-  final ContentRepository _repository = const DummyContentRepository();
+  final ResourceRepository _repository = const DummyResourceRepository();
   int? _grade;
   bool _loading = true;
 

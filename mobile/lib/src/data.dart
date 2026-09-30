@@ -1,14 +1,14 @@
 import 'models.dart';
 
-abstract interface class ContentRepository {
+abstract interface class ResourceRepository {
   List<Category> get categories;
-  List<LearningResource> resourcesForGrade(int grade);
-  List<LearningResource> resourcesForCategory(int grade, int categoryId);
+  List<Resource> resourcesForGrade(int grade);
+  List<Resource> resourcesForCategory(int grade, int categoryId);
   List<Book> get books;
 }
 
-class DummyContentRepository implements ContentRepository {
-  const DummyContentRepository();
+class DummyResourceRepository implements ResourceRepository {
+  const DummyResourceRepository();
 
   @override
   List<Category> get categories => const [
@@ -54,28 +54,28 @@ class DummyContentRepository implements ContentRepository {
   ];
 
   @override
-  List<LearningResource> resourcesForGrade(int grade) => [
+  List<Resource> resourcesForGrade(int grade) => [
     for (var i = 0; i < _templates.length; i++)
-      LearningResource(
+      Resource(
         id: grade * 100 + i,
         title: '${_templates[i].$1} lớp $grade',
         resourceType: _templates[i].$2,
         grade: grade,
         categoryId: _templates[i].$3,
-        thumbnail: ['navy', 'mint', 'orange', 'violet'][i % 4],
+        thumbnailKey: ['navy', 'mint', 'orange', 'violet'][i % 4],
         accessType: _templates[i].$4,
         progress: i == 0 ? .38 : null,
         pageCount: _templates[i].$2 == ResourceType.document
             ? 48 + i * 3
             : null,
-        duration: _templates[i].$2 == ResourceType.video
-            ? '${18 + i * 4} phút'
+        durationSeconds: _templates[i].$2 == ResourceType.video
+            ? (18 + i * 4) * 60
             : null,
       ),
   ];
 
   @override
-  List<LearningResource> resourcesForCategory(int grade, int categoryId) =>
+  List<Resource> resourcesForCategory(int grade, int categoryId) =>
       resourcesForGrade(
         grade,
       ).where((item) => item.categoryId == categoryId).toList();

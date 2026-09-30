@@ -7,7 +7,7 @@ import 'package:xuctu/src/models.dart';
 
 void main() {
   test('dummy repository filters resources by grade and category', () {
-    const repository = DummyContentRepository();
+    const repository = DummyResourceRepository();
     final resources = repository.resourcesForCategory(9, 8);
     expect(resources, isNotEmpty);
     expect(resources.every((item) => item.grade == 9), isTrue);

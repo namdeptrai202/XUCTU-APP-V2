@@ -1,16 +1,26 @@
-# xuctu
+# Xuctu Mobile
 
-A new Flutter project.
+Flutter prototype for the Xuctu Vietnamese mathematics learning experience. Phase 1 uses local dummy data and stores only the selected grade on the device.
 
-## Getting Started
+## Requirements
 
-This project is a starting point for a Flutter application.
+- Flutter 3.38 or newer
+- Android Studio and Android SDK for Android builds
+- Xcode for iOS builds
 
-A few resources to get you started if this is your first Flutter project:
+## Run
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+```sh
+flutter pub get
+flutter run
+```
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Verify
+
+```sh
+flutter analyze
+flutter test
+flutter build apk --debug
+```
+
+The prototype does not connect to a backend and does not include authentication, PDF reading, video playback, payments, or ordering.

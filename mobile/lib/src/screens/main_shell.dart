@@ -13,7 +13,7 @@ class MainShell extends StatefulWidget {
     required this.onGradeChanged,
   });
   final int grade;
-  final ContentRepository repository;
+  final ResourceRepository repository;
   final ValueChanged<int> onGradeChanged;
   @override
   State<MainShell> createState() => _MainShellState();

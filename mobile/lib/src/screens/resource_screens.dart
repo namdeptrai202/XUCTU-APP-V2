@@ -13,7 +13,7 @@ class CategoryScreen extends StatelessWidget {
   });
   final Category category;
   final int grade;
-  final ContentRepository repository;
+  final ResourceRepository repository;
   @override
   Widget build(BuildContext context) => ResourceCollectionScreen(
     title: category.name,
@@ -31,7 +31,7 @@ class ResourceCollectionScreen extends StatelessWidget {
   });
   final String title;
   final String subtitle;
-  final List<LearningResource> resources;
+  final List<Resource> resources;
   @override
   Widget build(BuildContext context) => Scaffold(
     appBar: AppBar(title: Text(title)),
@@ -71,7 +71,7 @@ class ResourceCollectionScreen extends StatelessWidget {
 
 class ResourceDetailScreen extends StatelessWidget {
   const ResourceDetailScreen({super.key, required this.resource});
-  final LearningResource resource;
+  final Resource resource;
   @override
   Widget build(BuildContext context) {
     final document = resource.resourceType == ResourceType.document;
@@ -107,7 +107,7 @@ class ResourceDetailScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 CoverArt(
-                  colorKey: resource.thumbnail,
+                  colorKey: resource.thumbnailKey,
                   label:
                       'TOÁN ${resource.grade}\n${document ? 'TÀI LIỆU' : 'BÀI GIẢNG'}',
                   icon: document
@@ -141,7 +141,7 @@ class ResourceDetailScreen extends StatelessWidget {
                       Text(
                         document
                             ? '${resource.pageCount} trang'
-                            : resource.duration ?? '',
+                            : formatDuration(resource.durationSeconds ?? 0),
                         style: const TextStyle(fontWeight: FontWeight.w700),
                       ),
                       const Spacer(),

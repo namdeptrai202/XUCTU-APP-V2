@@ -105,7 +105,7 @@ class ResourceCard extends StatelessWidget {
     required this.onTap,
     this.compact = false,
   });
-  final LearningResource resource;
+  final Resource resource;
   final VoidCallback onTap;
   final bool compact;
   @override
@@ -120,7 +120,7 @@ class ResourceCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   CoverArt(
-                    colorKey: resource.thumbnail,
+                    colorKey: resource.thumbnailKey,
                     label: 'TOÁN ${resource.grade}',
                   ),
                   const SizedBox(height: 10),
@@ -139,7 +139,7 @@ class ResourceCard extends StatelessWidget {
                   SizedBox(
                     width: 102,
                     child: CoverArt(
-                      colorKey: resource.thumbnail,
+                      colorKey: resource.thumbnailKey,
                       label: 'TOÁN ${resource.grade}',
                     ),
                   ),
@@ -204,6 +204,12 @@ String formatPrice(int value) {
     output.write(raw[i]);
   }
   return '$outputđ';
+}
+
+String formatDuration(int totalSeconds) {
+  final minutes = totalSeconds ~/ 60;
+  final seconds = totalSeconds % 60;
+  return '$minutes:${seconds.toString().padLeft(2, '0')} phút';
 }
 
 class EmptyState extends StatelessWidget {
